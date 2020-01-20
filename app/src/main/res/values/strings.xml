@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Football Constraint Layout</string>
+    <string name="extraPoint">+1</string>
+    <string name="teamA">Skins</string>
+    <string name="teamB">Shirts</string>
+    <string name="touchdown">+6 TOUCHDOWN</string>
+    <string name="fieldgoal">FIELDGOAL +3</string>
+    <string name="touchback">TOUCHBACK +2</string>
+    <string name="undo">OOPS!!</string>
+    <string name="resetScore">RESET</string>
+    <string name="checkboxes">TimeOuts</string>
+</resources>
