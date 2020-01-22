@@ -1,23 +1,28 @@
 package com.example.footballconstraintlayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
-//import android.widget.CompoundButton;
-//import android.widget.Switch;
+import android.widget.CompoundButton;
+import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     int scoreTeamA = 0; //global variables go directly below the MainActivity class declaration/
     int scoreTeamB = 0; //set variable for team scores
     int prevScoreTeamA; //set variable for previous score team A
     int prevScoreTeamB; //set variable for previous score team B
 
+    Switch mySwitchA; //initialize my variables (my switches)
+    Switch mySwitchB; //initialize my variables (my switches)
+
     /*
     to add to a variable, call the variable and set it equal to itself plus
     something. this looks like
     scoreTeamA = scoreTeamA + 3;
+    also written thusly-->
+    scoreTeam += +3;
     the above calls the variable, sets it equal to something with the equal sign, and sets
     it equal to itself, or the last value of itself, but adds something to it this time.
     Now, next time it is called, it will be in essence (scoreTeamA +3).
@@ -30,24 +35,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        /*Switch sButtonTeamA = (Switch) findViewById(R.id.teamPossessionA);
-//        final Switch sButtonTeamB = (Switch) findViewById(R.id.teamPossessionB);
-//
-//        sButtonTeamA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton cb, boolean on){
-//                if(on)
-//                {
-//                    //Do something when Switch button is on/checked
-//                    sButtonTeamB.setChecked(false);
-//                }
-//                else
-//                {
-//                    //Do something when Switch is off/unchecked
-//                    sButtonTeamB.setChecked(true);
-//                }
-//            }
-//        });*/
+
+        mySwitchA = findViewById(R.id.teamPossessionA);
+        mySwitchB = findViewById(R.id.teamPossessionB);
+        mySwitchA.setOnCheckedChangeListener(this);
     }
 
 
@@ -81,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         //I would also like the reset button to uncheck the timeout boxes, in order to reset them.
     }
+
 
     /**
      * displays team A previous score, then sets the real score back to that previous number
@@ -170,13 +162,24 @@ public class MainActivity extends AppCompatActivity {
         displayForTeamB(scoreTeamB);
         prevScoreTeamB = scoreTeamB - 1;
     }
-//    public void onSwitchClicked(View v) {
-//        Switch sButtonTeamA = (Switch) findViewById(R.id.teamPossessionA);
-//        boolean on = ((Switch) v).isChecked();
-//        if (on) {
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (mySwitchA.isChecked()) {
+            mySwitchB.setChecked(false);
+        } else {
+            mySwitchB.setChecked(true);
+            mySwitchA.setChecked(false);
+        }
+    }
+}
+//    strangely the checks are inversely linked when you hit teamPossessionA switch
+//    both on and off.
+//    but when you try to switch on or off teamPossessionB then the other
+//    is not inversely linked. I tried writing another listener for switchB.
+//    I tried writing several different if's and a then. I couldn't figure it out.
 
     //I tried to find a way to have teamPossessionA switch automatically turn teamPossessionB
     //off when teamPossessionA is on, and conversely I wanted teamPossessionA switch turned
     //off when teamPossessionB is on. I couldn't find a way to make it work
     //with onClickListener or setChecked either. Hopefully I'll learn more about this later
-}
