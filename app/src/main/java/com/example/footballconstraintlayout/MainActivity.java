@@ -1,6 +1,8 @@
 package com.example.footballconstraintlayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -8,7 +10,8 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity {
+    //implements CompoundButton.OnCheckedChangeListener {
     int scoreTeamA = 0; //global variables go directly below the MainActivity class declaration/
     int scoreTeamB = 0; //set variable for team scores
     int prevScoreTeamA; //set variable for previous score team A
@@ -38,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         mySwitchA = findViewById(R.id.teamPossessionA);
         mySwitchB = findViewById(R.id.teamPossessionB);
-        mySwitchA.setOnCheckedChangeListener(this);
+//        mySwitchA.setOnCheckedChangeListener(this);
+//        mySwitchB.setOnCheckedChangeListener(this);
     }
 
 
@@ -72,6 +76,33 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         //I would also like the reset button to uncheck the timeout boxes, in order to reset them.
     }
+/*This is super freakin annoying. /the possessionSwitcherA method works,
+but when I copy it make it onClick for switchB then it says it can't
+find it in the right class.
+
+Scratch that, it did work, but there was a curly brace in the wrong place
+That kept some code outside of the mainactivity and freaked the xml out, and
+wouldn't link the switch to the method.
+ */
+
+    public void possessionSwitcherA(View view) {
+        boolean isTeamA = mySwitchA.isChecked();
+        if (isTeamA) {
+            mySwitchB.setChecked(false);
+        } else {
+            mySwitchB.setChecked(true);
+        }
+    }
+
+    public void possessionSwitcherB(View view) {
+        boolean isTeamB = mySwitchB.isChecked();
+        if (isTeamB) {
+            mySwitchA.setChecked(false);
+        } else {
+            mySwitchA.setChecked(true);
+        }
+    }
+
 
 
     /**
@@ -163,15 +194,16 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         prevScoreTeamB = scoreTeamB - 1;
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (mySwitchA.isChecked()) {
-            mySwitchB.setChecked(false);
-        } else {
-            mySwitchB.setChecked(true);
-            mySwitchA.setChecked(false);
-        }
-    }
+//    @Override
+//    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//        if (mySwitchA.isChecked()) {
+//            mySwitchB.setChecked(false);
+//        }
+//            else {
+//            mySwitchB.setChecked(true);
+//            mySwitchA.setChecked(false);
+//        }
+    //}
 }
 //    strangely the checks are inversely linked when you hit teamPossessionA switch
 //    both on and off.
