@@ -10,11 +10,22 @@
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:drawable/alert_light_frame"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="#4CAF50"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/checkBox3"
@@ -54,11 +65,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:checked="true"
+        android:onClick="possessionSwitcherA"
         app:layout_constraintEnd_toStartOf="@+id/divider"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toEndOf="@+id/TeamAScore"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="possessionSwitcherA" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/teamPossessionB"
@@ -67,11 +78,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:onClick="possessionSwitcherB"
         app:layout_constraintEnd_toStartOf="@+id/TeamBScore"
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="possessionSwitcherB" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/TeamAScore"
@@ -126,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@+id/touchdownTeamA" />
 
     <Button
-        android:id="@+id/touchbackTeamA"
+        android:id="@+id/safetyTeamA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -135,7 +146,7 @@
         android:onClick="addTwoForTeamA"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:text="@string/touchback"
+        android:text="@string/safety"
         app:layout_constraintEnd_toStartOf="@+id/divider"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/fieldgoalTeamA" />
@@ -181,7 +192,7 @@
         app:layout_constraintTop_toBottomOf="@+id/touchdownTeamB" />
 
     <Button
-        android:id="@+id/touchbackTeamB"
+        android:id="@+id/safetyTeamB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
@@ -190,7 +201,7 @@
         android:onClick="addTwoForTeamB"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:text="@string/touchback"
+        android:text="@string/safety"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toEndOf="@+id/divider"
         app:layout_constraintTop_toBottomOf="@+id/fieldgoalTeamB" />
@@ -220,7 +231,7 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/touchbackTeamA"
+        app:layout_constraintTop_toBottomOf="@+id/safetyTeamA"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
@@ -237,7 +248,7 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/touchbackTeamB"
+        app:layout_constraintTop_toBottomOf="@+id/safetyTeamB"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView

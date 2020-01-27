@@ -3,9 +3,9 @@ package com.example.footballconstraintlayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     int scoreTeamB = 0; //set variable for team scores
     int prevScoreTeamA; //set variable for previous score team A
     int prevScoreTeamB; //set variable for previous score team B
-
     Switch mySwitchA; //initialize my variables (my switches)
     Switch mySwitchB; //initialize my variables (my switches)
 
@@ -38,11 +37,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mySwitchA = findViewById(R.id.teamPossessionA);
         mySwitchB = findViewById(R.id.teamPossessionB);
-//        mySwitchA.setOnCheckedChangeListener(this);
-//        mySwitchB.setOnCheckedChangeListener(this);
+
     }
 
 
@@ -84,22 +81,65 @@ Scratch that, it did work, but there was a curly brace in the wrong place
 That kept some code outside of the mainactivity and freaked the xml out, and
 wouldn't link the switch to the method.
  */
-
+//    public void highlightA(View view) {
+//        touchdownTeamA.setBackgroundColor(Color.GREEN);
+//    }
+//    public void colorButtonsA(View view) {
+//        touchdownTeamA.setBackgroundColor(Color.GREEN);
+//        fieldGoalTeamA.setBackgroundColor(Color.GREEN);
+//        safetyTeamA.setBackgroundColor(Color.GREEN);
+//    }
     public void possessionSwitcherA(View view) {
         boolean isTeamA = mySwitchA.isChecked();
+        Button touchdownTeamA = findViewById(R.id.touchdownTeamA);
+        Button fieldGoalTeamA = findViewById(R.id.fieldgoalTeamA);
+        Button safetyTeamA = findViewById(R.id.safetyTeamA);
+        Button safetyTeamB = findViewById(R.id.safetyTeamB);
+        Button touchdownTeamB = findViewById(R.id.touchdownTeamB);
+        Button fieldgoalTeamB = findViewById(R.id.fieldgoalTeamB);
         if (isTeamA) {
             mySwitchB.setChecked(false);
+            touchdownTeamA.setBackgroundColor(Color.GREEN);
+            fieldGoalTeamA.setBackgroundColor(Color.GREEN);
+            safetyTeamA.setBackgroundColor(Color.GREEN);
+            touchdownTeamB.setBackgroundColor(Color.LTGRAY);
+            fieldgoalTeamB.setBackgroundColor(Color.LTGRAY);
+            safetyTeamB.setBackgroundColor(Color.LTGRAY);
         } else {
             mySwitchB.setChecked(true);
+            touchdownTeamB.setBackgroundColor(Color.GREEN);
+            fieldgoalTeamB.setBackgroundColor(Color.GREEN);
+            safetyTeamB.setBackgroundColor(Color.GREEN);
+            touchdownTeamA.setBackgroundColor(Color.LTGRAY);
+            fieldGoalTeamA.setBackgroundColor(Color.LTGRAY);
+            safetyTeamA.setBackgroundColor(Color.LTGRAY);
         }
     }
 
     public void possessionSwitcherB(View view) {
         boolean isTeamB = mySwitchB.isChecked();
+        Button touchdownTeamA = findViewById(R.id.touchdownTeamA);
+        Button fieldGoalTeamA = findViewById(R.id.fieldgoalTeamA);
+        Button safetyTeamA = findViewById(R.id.safetyTeamA);
+        Button safetyTeamB = findViewById(R.id.safetyTeamB);
+        Button touchdownTeamB = findViewById(R.id.touchdownTeamB);
+        Button fieldgoalTeamB = findViewById(R.id.fieldgoalTeamB);
         if (isTeamB) {
             mySwitchA.setChecked(false);
+            touchdownTeamB.setBackgroundColor(Color.GREEN);
+            fieldgoalTeamB.setBackgroundColor(Color.GREEN);
+            safetyTeamB.setBackgroundColor(Color.GREEN);
+            touchdownTeamA.setBackgroundColor(Color.LTGRAY);
+            fieldGoalTeamA.setBackgroundColor(Color.LTGRAY);
+            safetyTeamA.setBackgroundColor(Color.LTGRAY);
         } else {
             mySwitchA.setChecked(true);
+            touchdownTeamA.setBackgroundColor(Color.GREEN);
+            fieldGoalTeamA.setBackgroundColor(Color.GREEN);
+            safetyTeamA.setBackgroundColor(Color.GREEN);
+            touchdownTeamB.setBackgroundColor(Color.LTGRAY);
+            fieldgoalTeamB.setBackgroundColor(Color.LTGRAY);
+            safetyTeamB.setBackgroundColor(Color.LTGRAY);
         }
     }
 
@@ -205,6 +245,13 @@ wouldn't link the switch to the method.
 //        }
     //}
 }
+/**
+ * the above was my 15th attempt at getting the buttons to work. I couldn't get
+ * the onclick listener to work for only one button, so I set onClick methods for
+ * both, and changed the logic a little bit by adding in boolean value for the
+ * checked states, and checking those in the if else control flow.
+ */
+
 //    strangely the checks are inversely linked when you hit teamPossessionA switch
 //    both on and off.
 //    but when you try to switch on or off teamPossessionB then the other
