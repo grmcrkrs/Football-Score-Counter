@@ -99,22 +99,36 @@ wouldn't link the switch to the method.
         Button fieldgoalTeamB = findViewById(R.id.fieldgoalTeamB);
         if (isTeamA) {
             mySwitchB.setChecked(false);
-            touchdownTeamA.setBackgroundColor(Color.GREEN);
-            fieldGoalTeamA.setBackgroundColor(Color.GREEN);
-            safetyTeamA.setBackgroundColor(Color.GREEN);
+            touchdownTeamA.setBackgroundColor(R.color.colorAccent);
+            fieldGoalTeamA.setBackgroundColor(Color.parseColor("#ffffbb33"));
+            safetyTeamA.setBackgroundColor(Color.parseColor("#ffffbb33"));
             touchdownTeamB.setBackgroundColor(Color.LTGRAY);
             fieldgoalTeamB.setBackgroundColor(Color.LTGRAY);
             safetyTeamB.setBackgroundColor(Color.LTGRAY);
         } else {
             mySwitchB.setChecked(true);
-            touchdownTeamB.setBackgroundColor(Color.GREEN);
-            fieldgoalTeamB.setBackgroundColor(Color.GREEN);
-            safetyTeamB.setBackgroundColor(Color.GREEN);
-            touchdownTeamA.setBackgroundColor(Color.LTGRAY);
-            fieldGoalTeamA.setBackgroundColor(Color.LTGRAY);
-            safetyTeamA.setBackgroundColor(Color.LTGRAY);
+            touchdownTeamB.setBackgroundColor(Color.parseColor("#ffffbb33"));
+            fieldgoalTeamB.setBackgroundColor(Color.parseColor("#ffffbb33"));
+            safetyTeamB.setBackgroundColor(Color.parseColor("#ffffbb33"));
+            touchdownTeamA.setBackgroundColor(R.color.colorPrimaryDark);
+            fieldGoalTeamA.setBackgroundColor(R.color.colorPrimaryDark);
+            safetyTeamA.setBackgroundColor(R.color.colorPrimaryDark);
         }
     }
+    //below are examples of how to setBackgroundColor for buttons.
+//    fieldgoalTeamB.setBackgroundColor(getResources().getColor(R.color.blue));
+//
+//    or
+//
+//    fieldgoalTeamB.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark));
+//
+//    or
+//
+//    fieldgoalTeamB.setBackgroundColor(Color.rgb(226, 11, 11));
+//
+//
+//    or
+//    fieldgoalTeamB.setBackgroundColor(Color.RED)
 
     public void possessionSwitcherB(View view) {
         boolean isTeamB = mySwitchB.isChecked();
